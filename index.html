@@ -3,56 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Where I truly live</title>
+    <title>The Ultimate Vibe Blog - Nam Tính & Năng Động</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #030712;
-            --accent: #22d3ee;
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --text: #f8fafc;
-        }
-      <div id="music-player" style="
-    position: fixed; 
-    bottom: 20px; 
-    left: 20px; 
-    z-index: 9999; 
-    background: rgba(255, 255, 255, 0.05); 
-    backdrop-filter: blur(15px); 
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1); 
-    padding: 12px; 
-    border-radius: 24px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 280px;
-">
-    <div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: 8px; padding: 0 10px;">
-        <span style="font-size: 10px; font-weight: 700; color: var(--accent); letter-spacing: 1px;">VIBE RADIO</span>
-        <span style="font-size: 10px; color: #94a3b8;">ONLINE</span>
-    </div>
     
-    <iframe 
-        width="100%" 
-        height="80" 
-        src="https://www.youtube.com/watch?v=GEb1drHmbDA&list=RDGEb1drHmbDA&start_radio=1&rv=Y8EUOwsiaqs" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        style="border-radius: 15px; filter: invert(0) contrast(1.1);">
-    </iframe>
-</div>
+    <style>
+        /* Các biến CSS tùy chỉnh */
+        :root {
+            --bg: #030712; /* Nền xanh đen sâu */
+            --accent: #22d3ee; /* Màu xanh Cyan làm điểm nhấn */
+            --glass: rgba(255, 255, 255, 0.05); /* Nền kính mờ */
+            --glass-border: rgba(255, 255, 255, 0.1); /* Viền kính mờ */
+            --text: #f8fafc; /* Màu chữ chính */
+            --sub-text: #94a3b8; /* Màu chữ phụ */
+            --border: #334155; /* Màu đường viền */
+        }
+
+        /* Reset CSS và thiết lập chung */
         body {
             font-family: 'Outfit', sans-serif;
-            background: radial-gradient(circle at top right, #1e293b, #030712); /* Nền chuyển màu sâu */
+            background: radial-gradient(circle at top right, #1e293b, #030712); /* Nền chuyển màu */
             color: var(--text);
             margin: 0;
             min-height: 100vh;
+            overflow-x: hidden; /* Ngăn cuộn ngang */
+            scroll-behavior: smooth; /* Cuộn trang mượt mà */
         }
 
+        /* Header - VIBE.LOG */
         header {
             padding: 40px 20px;
             max-width: 1100px;
@@ -67,9 +44,76 @@
             font-size: 24px;
             font-weight: 700;
             letter-spacing: -1px;
+            /* Gradient cho logo */
+            background: linear-gradient(90deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Bộ lọc bài viết trẻ trung */
+        /* Navigation Menu */
+        nav a {
+            color: var(--sub-text);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--accent); /* Hiệu ứng neon khi hover */
+        }
+
+        /* Hero Section - Dòng chữ lớn */
+        .hero {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 8vw, 5rem); /* Kích thước chữ responsive */
+            line-height: 0.9;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .hero span {
+            color: var(--accent);
+        }
+
+        /* Các Section chung */
+        section {
+            padding: 100px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            border-top: 1px solid var(--border); /* Đường phân cách */
+            opacity: 0; /* Ẩn ban đầu cho animation */
+            transform: translateY(30px);
+            animation: fadeInSection 0.8s forwards; /* Animation hiện dần */
+        }
+
+        @keyframes fadeInSection {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tiêu đề Section */
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            text-align: center; /* Căn giữa tiêu đề */
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        /* Bộ lọc bài viết */
         .filters {
             display: flex;
             gap: 10px;
@@ -94,16 +138,17 @@
             box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
         }
 
+        /* Container cho các Card */
         .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px 100px;
+            max-width: 1100px; /* Đã được thiết lập trong section */
+            margin: 0 auto; /* Đã được thiết lập trong section */
+            padding: 0 20px 0; /* padding bottom để không bị chặn bởi footer */
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
+            gap: 25px;
         }
 
-        /* Glassmorphism Card + Animation */
+        /* Card (Bài viết) - Hiệu ứng Glassmorphism + Animation */
         .card {
             background: var(--glass);
             backdrop-filter: blur(12px); /* Hiệu ứng kính mờ */
@@ -111,10 +156,10 @@
             border: 1px solid var(--glass-border);
             border-radius: 24px;
             padding: 30px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Hiệu ứng nảy */
             opacity: 0;
             transform: translateY(30px);
-            animation: fadeInUp 0.6s forwards; /* Hiệu ứng hiện dần */
+            animation: fadeInUp 0.6s forwards; /* Animation hiện dần từng card */
         }
 
         @keyframes fadeInUp {
@@ -122,9 +167,9 @@
         }
 
         .card:hover {
-            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-8px) translateX(4px);
             border-color: var(--accent);
-            transform: translateY(-10px) scale(1.02);
+            box-shadow: -8px 8px 0px var(--accent); /* Đổ bóng cứng */
         }
 
         .tag {
@@ -138,9 +183,8 @@
         }
 
         h2 { font-family: 'Space Grotesk', sans-serif; margin: 10px 0; }
-        p { color: #94a3b8; line-height: 1.6; }
+        p { color: var(--sub-text); line-height: 1.6; }
 
-        /* Nút xem thêm kiểu Neon */
         .read-more {
             margin-top: 20px;
             display: inline-block;
@@ -150,9 +194,177 @@
             font-size: 14px;
         }
 
-        /* Ẩn card khi lọc */
         .card.hidden { display: none; }
 
+        /* Project Section Styles */
+        #projects {
+            border-top: 1px solid var(--border);
+            padding-top: 100px;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .project-item {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 30px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .project-item:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+            transform: translateY(-5px);
+        }
+        .project-tag {
+            font-size: 0.8rem;
+            color: var(--accent);
+            background-color: rgba(34, 211, 238, 0.15);
+            padding: 5px 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        /* About Section Styles */
+        #about {
+            border-top: 1px solid var(--border);
+            padding-top: 100px;
+        }
+        .about-flex {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            flex-wrap: wrap; /* Cho phép xuống dòng trên mobile */
+        }
+        .about-flex > div { flex: 1; min-width: 300px; } /* Đảm bảo responsive */
+        .gear-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        .gear-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            color: var(--sub-text);
+            font-size: 0.95rem;
+        }
+        .gear-list li::before {
+            content: "⚡";
+            margin-right: 10px;
+            color: var(--accent);
+            font-size: 1.2em;
+        }
+        .about-image {
+            text-align: center;
+            font-size: 150px;
+            filter: grayscale(80%) brightness(1.2); /* Tạo hiệu ứng ảnh "ngầu" */
+            line-height: 1;
+        }
+
+        /* Connect Section Styles */
+        #connect {
+            border-top: 1px solid var(--border);
+            padding-top: 100px;
+            text-align: center;
+            padding-bottom: 100px;
+        }
+        .contact-btn {
+            padding: 15px 40px;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .contact-btn:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 30px var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px;
+            border-top: 1px solid var(--border);
+            color: var(--sub-text);
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .section-title { font-size: 2rem; }
+            .project-grid { grid-template-columns: 1fr; }
+            .about-flex { flex-direction: column; align-items: flex-start; }
+            nav a { margin-left: 15px; }
+        }
+
+        /* Music Player Glassmorphism */
+        #music-player {
+            position: fixed; 
+            bottom: 20px; 
+            left: 20px; 
+            z-index: 9999; 
+            background: rgba(255, 255, 255, 0.05); /* Nền trong suốt */
+            backdrop-filter: blur(15px); /* Kính mờ */
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            padding: 12px; 
+            border-radius: 24px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 280px;
+            transition: all 0.3s ease;
+        }
+        #music-player:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 40px rgba(34, 211, 238, 0.6);
+        }
+
+        #music-player .info-bar {
+            display: flex; 
+            justify-content: space-between; 
+            width: 100%; 
+            margin-bottom: 8px; 
+            padding: 0 10px;
+        }
+        #music-player .info-bar span {
+            font-size: 10px; 
+            font-weight: 700; 
+            color: var(--accent); 
+            letter-spacing: 1px;
+        }
+        #music-player .info-bar .status {
+            color: #94a3b8;
+        }
+        #music-player iframe {
+            width: 100%; 
+            height: 80px; 
+            border-radius: 15px; 
+            filter: invert(0) contrast(1.1); /* Giúp iframe trông tối hơn */
+        }
     </style>
 </head>
 <body>
@@ -160,37 +372,123 @@
 <header>
     <div class="logo">VIBE.LOG</div>
     <nav>
-        <div style="font-size: 12px; opacity: 0.5;">DEC 2025 EDITION</div>
+        <a href="#blog">BLOG</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#about">ABOUT</a>
+        <a href="#connect">CONNECT</a>
     </nav>
 </header>
 
-<div class="filters">
-    <button class="filter-btn active" onclick="filterSelection('all')">ALL</button>
-    <button class="filter-btn" onclick="filterSelection('tech')">TECH</button>
-    <button class="filter-btn" onclick="filterSelection('life')">LIFE</button>
+<div class="hero">
+    <h1>STAY <span>BOLD</span>.<br>STAY REAL.</h1>
 </div>
 
-<div class="container">
-    <div class="card tech">
-        <span class="tag">Technology</span>
-        <h2>Gemini 3 Flash & Vibe Coding</h2>
-        <p>Khi AI không chỉ trả lời mà còn hiểu được cả "vibe" của bạn. Tương lai lập trình là đây.</p>
-        <a href="#" class="read-more">EXPLORE →</a>
+<section id="blog">
+    <h2 class="section-title">Latest <span>Posts</span></h2>
+    <div class="filters">
+        <button class="filter-btn active" onclick="filterSelection('all')">ALL</button>
+        <button class="filter-btn" onclick="filterSelection('tech')">TECH</button>
+        <button class="filter-btn" onclick="filterSelection('life')">LIFE</button>
+        <button class="filter-btn" onclick="filterSelection('gear')">GEAR</button>
     </div>
+    <div class="container">
+        <div class="card tech">
+            <span class="tag">Technology</span>
+            <h2>Gemini 3 Flash & Vibe Coding</h2>
+            <p>Khi AI không chỉ trả lời mà còn hiểu được cả "vibe" của bạn. Tương lai lập trình là đây.</p>
+            <a href="#" class="read-more">EXPLORE →</a>
+        </div>
 
-    <div class="card life">
-        <span class="tag">Lifestyle</span>
-        <h2>Night Drive và Tư duy</h2>
-        <p>Tại sao những ý tưởng tốt nhất thường đến vào lúc 2 giờ sáng trên những cung đường vắng?</p>
-        <a href="#" class="read-more">EXPLORE →</a>
-    </div>
+        <div class="card life">
+            <span class="tag">Lifestyle</span>
+            <h2>Night Drive và Tư duy</h2>
+            <p>Tại sao những ý tưởng tốt nhất thường đến vào lúc 2 giờ sáng trên những cung đường vắng?</p>
+            <a href="#" class="read-more">EXPLORE →</a>
+        </div>
 
-    <div class="card tech">
-        <span class="tag">Setup</span>
-        <h2>Minimalist Desk 2025</h2>
-        <p>Màn hình cong, bàn phím cơ custom và không một sợi dây thừa. Sự tập trung tuyệt đối.</p>
-        <a href="#" class="read-more">EXPLORE →</a>
+        <div class="card gear">
+            <span class="tag">Gear</span>
+            <h2>Minimalist Desk 2025</h2>
+            <p>Màn hình cong, bàn phím cơ custom và không một sợi dây thừa. Sự tập trung tuyệt đối.</p>
+            <a href="#" class="read-more">EXPLORE →</a>
+        </div>
+
+        <div class="card tech">
+            <span class="tag">AI Insights</span>
+            <h2>Unimax: CSKH Online 10-20 Triệu</h2>
+            <p>Phân tích cơ hội việc làm CSKH tại nhà với mức thu nhập hấp dẫn tại Unimax Việt Nam.</p>
+            <a href="#" class="read-more">EXPLORE →</a>
+        </div>
+        </div>
+</section>
+
+<section id="projects">
+    <h2 class="section-title">My <span>Projects</span></h2>
+    <div class="project-grid">
+        <div class="project-item">
+            <span class="project-tag">WEB APP</span>
+            VIBE PORTFOLIO v1.0
+        </div>
+        <div class="project-item">
+            <span class="project-tag">AI BOT</span>
+            AI CHAT INTERFACE
+        </div>
+        <div class="project-item">
+            <span class="project-tag">DASHBOARD</span>
+            CRYPTO ANALYTICS
+        </div>
+        <div class="project-item">
+            <span class="project-tag">COMING SOON</span>
+            NEURAL NETWORK
+        </div>
     </div>
+</section>
+
+<section id="about">
+    <h2 class="section-title">The <span>Gear</span></h2>
+    <div class="about-flex">
+        <div style="flex: 1;">
+            <p style="font-size: 1.1em;">Tôi là một người đam mê công nghệ, tối giản và luôn đi tìm những "vibe" mới trong cuộc sống số. Blog này là nơi tôi chia sẻ những ý tưởng, dự án và kinh nghiệm của mình.</p>
+            <ul class="gear-list">
+                <li>MacBook Pro M3 Max</li>
+                <li>Keychron K2 Custom Keyboard</li>
+                <li>Dell UltraSharp 4K Monitor</li>
+                <li>Sony WH-1000XM5</li>
+                <li>Logitech MX Master 3S</li>
+            </ul>
+        </div>
+        <div class="about-image" style="flex: 1;">
+            👨‍💻
+        </div>
+    </div>
+</section>
+
+<section id="connect">
+    <h2 class="section-title">Let's <span>Talk</span></h2>
+    <p style="margin-bottom: 40px; color: var(--sub-text); font-size: 1.1em;">Bạn có dự án thú vị hay chỉ muốn tán gẫu về công nghệ? Đừng ngần ngại liên hệ nhé!</p>
+    <a href="mailto:your-email@gmail.com" class="contact-btn">SAY HELLO</a>
+</section>
+
+<footer>
+    &copy; 2025 // VIBE.LOG. // DESIGNED WITH CODE & PASSION.
+</footer>
+
+<div id="music-player">
+    <div class="info-bar">
+        <span>VIBE RADIO</span>
+        <span class="status">LIVE</span>
+    </div>
+    
+    <iframe 
+        width="100%" 
+        height="80" 
+        src="https://www.youtube.com/embed/videoseries?list=PLm2b1d0aR2hD-N_D-gA6wT-fL3hW9_b-j&theme=dark&color=white" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen
+        style="border-radius: 15px; filter: invert(0) contrast(1.1);">
+    </iframe>
 </div>
 
 <script>
@@ -206,23 +504,40 @@
             }
         }
         
-        // Cập nhật trạng thái nút
+        // Cập nhật trạng thái nút Active
         var btns = document.getElementsByClassName("filter-btn");
         for (var i = 0; i < btns.length; i++) {
             btns[i].classList.remove("active");
         }
-        event.currentTarget.classList.add("active");
+        // event.currentTarget có thể không tồn tại nếu gọi từ bên ngoài
+        if (event && event.currentTarget) {
+             event.currentTarget.classList.add("active");
+        } else {
+            // Trường hợp mặc định khi tải trang
+            document.querySelector('.filter-btn[onclick="filterSelection(\'' + c + '\')"]').classList.add('active');
+        }
     }
 
-    // Animation trễ cho từng card
+    // Animation trễ cho từng card khi tải trang
     document.querySelectorAll('.card').forEach((card, index) => {
         card.style.animationDelay = `${index * 0.15}s`;
     });
+
+    // Cuộn mượt cho Navigation
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Gọi filterSelection('all') khi tải trang để hiện tất cả bài viết
+    window.onload = function() {
+        filterSelection('all');
+    };
 </script>
 
 </body>
 </html>
-
-
-
-
