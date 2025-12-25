@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Tech Vibe Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #030712;
+            --accent: #22d3ee;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text: #f8fafc;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(circle at top right, #1e293b, #030712); /* Nền chuyển màu sâu */
+            color: var(--text);
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        /* Bộ lọc bài viết trẻ trung */
+        .filters {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .filter-btn {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        /* Glassmorphism Card + Animation */
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(12px); /* Hiệu ứng kính mờ */
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s forwards; /* Hiệu ứng hiện dần */
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent);
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .tag {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        h2 { font-family: 'Space Grotesk', sans-serif; margin: 10px 0; }
+        p { color: #94a3b8; line-height: 1.6; }
+
+        /* Nút xem thêm kiểu Neon */
+        .read-more {
+            margin-top: 20px;
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Ẩn card khi lọc */
+        .card.hidden { display: none; }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">VIBE.LOG</div>
+    <nav>
+        <div style="font-size: 12px; opacity: 0.5;">DEC 2025 EDITION</div>
+    </nav>
+</header>
+
+<div class="filters">
+    <button class="filter-btn active" onclick="filterSelection('all')">ALL</button>
+    <button class="filter-btn" onclick="filterSelection('tech')">TECH</button>
+    <button class="filter-btn" onclick="filterSelection('life')">LIFE</button>
+</div>
+
+<div class="container">
+    <div class="card tech">
+        <span class="tag">Technology</span>
+        <h2>Gemini 3 Flash & Vibe Coding</h2>
+        <p>Khi AI không chỉ trả lời mà còn hiểu được cả "vibe" của bạn. Tương lai lập trình là đây.</p>
+        <a href="#" class="read-more">EXPLORE →</a>
+    </div>
+
+    <div class="card life">
+        <span class="tag">Lifestyle</span>
+        <h2>Night Drive và Tư duy</h2>
+        <p>Tại sao những ý tưởng tốt nhất thường đến vào lúc 2 giờ sáng trên những cung đường vắng?</p>
+        <a href="#" class="read-more">EXPLORE →</a>
+    </div>
+
+    <div class="card tech">
+        <span class="tag">Setup</span>
+        <h2>Minimalist Desk 2025</h2>
+        <p>Màn hình cong, bàn phím cơ custom và không một sợi dây thừa. Sự tập trung tuyệt đối.</p>
+        <a href="#" class="read-more">EXPLORE →</a>
+    </div>
+</div>
+
+<script>
+    // Logic bộ lọc bài viết
+    function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("card");
+        if (c == "all") c = "";
+        for (i = 0; i < x.length; i++) {
+            x[i].classList.remove("hidden");
+            if (x[i].className.indexOf(c) <= -1) {
+                x[i].classList.add("hidden");
+            }
+        }
+        
+        // Cập nhật trạng thái nút
+        var btns = document.getElementsByClassName("filter-btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].classList.remove("active");
+        }
+        event.currentTarget.classList.add("active");
+    }
+
+    // Animation trễ cho từng card
+    document.querySelectorAll('.card').forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.15}s`;
+    });
+</script>
+
+</body>
+</html>
