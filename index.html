@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
+        
         :root {
             --bg-color: #ffffff; --text-color: #1a1a1a; --accent-color: #c5a059;
             --modal-bg: #ffffff; --font-title: 'Playfair Display', serif;
@@ -16,6 +17,15 @@
         [data-theme="dark"] {
             --bg-color: #0b0b0b; --text-color: #f0f0f0;
             --modal-bg: #151515; --accent-color: #d4af37;
+        }
+
+        footer img {
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        footer img:hover {
+            filter: none; /* Khi di chuột vào sẽ hiện màu thật */
+            transform: scale(1.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -95,6 +105,7 @@
         .btn-gold:hover { background: var(--text-color); color: var(--bg-color); }
 
         @media (max-width: 850px) { .modal-content { flex-direction: column; height: 90vh; overflow-y: auto; } .modal-img-col, .modal-info-col { width: 100%; } .modal-img-col { height: 300px; } .cart-sidebar { width: 100%; } }
+        
     </style>
 </head>
 <body>
@@ -293,5 +304,38 @@
         window.onclick = (e) => { if(e.target.id === 'productModal') closeModal(); };
         window.onload = () => { renderProducts(); updateUI(); reveal(); };
     </script>
+    <footer style="background: #101010; color: #fff; padding: 60px 0 30px 0; margin-top: 50px; font-family: 'Times New Roman', serif; border-top: 1px solid #222;">
+    <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; padding: 0 20px;">
+        
+        <div style="flex: 1; min-width: 250px;">
+            <h3 style="color: #c5a059; margin-bottom: 20px; letter-spacing: 3px; font-size: 24px;">LUXURY GEMS</h3>
+            <p style="font-size: 14px; line-height: 1.8; opacity: 0.6; max-width: 300px;">
+                Chế tác thủ công tinh xảo, mang giá trị vĩnh cửu và vẻ đẹp sang trọng đến từng khách hàng.
+            </p>
+        </div>
+
+        <div style="text-align: right; flex: 1; min-width: 250px;">
+            <h4 style="margin-bottom: 20px; letter-spacing: 1px;">LIÊN HỆ</h4>
+            <p style="font-size: 14px; opacity: 0.7; margin-bottom: 8px;">📍 123 Đường Đá Quý, Quận 1, TP.HCM</p>
+            <p style="font-size: 14px; opacity: 0.7; margin-bottom: 25px;">📞 Hotline: 090.xxx.xxxx</p>
+
+            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 15px;">
+                <h4 style="font-size: 11px; opacity: 0.5; letter-spacing: 1px;">WE ACCEPT</h4>
+                <div style="display: flex; gap: 15px; align-items: center; filter: grayscale(1) invert(1); opacity: 0.8;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" style="height: 12px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" style="height: 18px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/VietQR_Logo.svg" style="height: 12px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" style="height: 18px; border-radius: 2px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid #222; font-size: 11px; opacity: 0.4; letter-spacing: 1px;">
+        <p>&copy; 2026 LUXURY GEMS. ALL RIGHTS RESERVED.</p>
+    </div>
+</footer>
+
+
 </body>
 </html>
