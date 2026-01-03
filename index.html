@@ -63,10 +63,37 @@
 }
 
 /* Chỉ hiển thị trên màn hình nhỏ hơn 768px */
+/* --- CÁC CSS KHÁC CỦA BẠN --- */
+
 @media (max-width: 768px) {
-    .bottom-nav { display: flex; }
-    body { padding-bottom: 80px; } /* Đẩy trang lên để không bị che bởi menu */
-    .contact-fixed { display: none; } /* Ẩn nút Zalo/Hotline cũ để dùng Bottom Nav mới */
+    /* 1. Phần cho Dãy danh mục (Slider ngang) */
+    .category-grid {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 20px;
+        gap: 15px;
+        scroll-snap-type: x mandatory;
+    }
+    .category-grid::-webkit-scrollbar { display: none; }
+    .cat-item { min-width: 100px; scroll-snap-align: start; }
+
+    /* 2. Phần cho Bottom Nav (Hiện menu dưới) */
+    .bottom-nav { 
+        display: flex; 
+    }
+    body { 
+        padding-bottom: 80px; 
+    }
+
+    /* 3. Phần ẩn Giỏ hàng ở Header (Như bạn vừa hỏi) */
+    .nav-icons span:last-child { 
+        display: none !important; 
+    }
+    
+    /* Ẩn luôn nút liên hệ cũ nếu đã có Bottom Nav */
+    .contact-fixed { 
+        display: none; 
+    }
 }
         
         :root {
@@ -476,4 +503,3 @@
 
 </body>
 </html>
-
