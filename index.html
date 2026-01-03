@@ -402,6 +402,7 @@
             });
             document.getElementById('totalPrice').innerText = total.toLocaleString('vi-VN') + '₫';
             document.getElementById('cart-count').innerText = cart.length;
+            document.getElementById('mobile-cart-count').innerText = cart.length;
         }
         function rm(i) { cart.splice(i, 1); localStorage.setItem('luxury_c', JSON.stringify(cart)); updateUI(); }
         function toggleTheme() { document.body.setAttribute('data-theme', document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light'); }
@@ -475,3 +476,4 @@
 
 </body>
 </html>
+
