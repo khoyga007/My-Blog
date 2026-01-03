@@ -7,6 +7,67 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
+
+        /* --- CSS BOTTOM NAVIGATION --- */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    display: none; /* Mặc định ẩn trên PC */
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0 25px 0; /* Padding bottom sâu hơn cho iPhone đời mới */
+    box-shadow: 0 -2px 15px rgba(0,0,0,0.1);
+    z-index: 9999;
+}
+
+.nav-item {
+    text-align: center;
+    text-decoration: none;
+    color: #666;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-icon { font-size: 20px; margin-bottom: 4px; }
+.nav-text { font-size: 10px; font-weight: 600; text-transform: uppercase; }
+
+/* Nút gọi nổi bật */
+.nav-call {
+    background: #c5a059;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -25px; /* Đẩy nút gọi bay lên trên một chút */
+    border: 5px solid #fff;
+    box-shadow: 0 4px 10px rgba(197, 160, 89, 0.3);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: red;
+    color: white;
+    font-size: 9px;
+    padding: 2px 5px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* Chỉ hiển thị trên màn hình nhỏ hơn 768px */
+@media (max-width: 768px) {
+    .bottom-nav { display: flex; }
+    body { padding-bottom: 80px; } /* Đẩy trang lên để không bị che bởi menu */
+    .contact-fixed { display: none; } /* Ẩn nút Zalo/Hotline cũ để dùng Bottom Nav mới */
+}
         
         :root {
             --bg-color: #ffffff; --text-color: #1a1a1a; --accent-color: #c5a059;
@@ -384,7 +445,33 @@
         <p>&copy; 2026 LUXURY GEMS. ALL RIGHTS RESERVED.</p>
     </div>
 </footer>
-
+<div class="bottom-nav">
+    <a href="#" class="nav-item">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-text">Trang chủ</span>
+    </a>
+    <a href="#visual-categories" class="nav-item">
+        <span class="nav-icon">💎</span>
+        <span class="nav-text">Danh mục</span>
+    </a>
+    <a href="tel:090xxxxxxx" class="nav-item">
+        <div class="nav-call">
+            <span class="nav-icon" style="color: white;">📞</span>
+        </div>
+        <span class="nav-text">Gọi ngay</span>
+    </a>
+    <a href="javascript:void(0)" class="nav-item" onclick="toggleCart()">
+        <div style="position: relative;">
+            <span class="nav-icon">🛒</span>
+            <span id="mobile-cart-count" class="cart-badge">0</span>
+        </div>
+        <span class="nav-text">Giỏ hàng</span>
+    </a>
+    <a href="#" class="nav-item" onclick="alert('Tính năng thành viên sắp ra mắt!')">
+        <span class="nav-icon">👤</span>
+        <span class="nav-text">Tài khoản</span>
+    </a>
+</div>
 
 </body>
 </html>
