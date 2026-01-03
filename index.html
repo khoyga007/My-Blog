@@ -105,6 +105,19 @@
         .btn-gold:hover { background: var(--text-color); color: var(--bg-color); }
 
         @media (max-width: 850px) { .modal-content { flex-direction: column; height: 90vh; overflow-y: auto; } .modal-img-col, .modal-info-col { width: 100%; } .modal-img-col { height: 300px; } .cart-sidebar { width: 100%; } }
+        /* --- CSS CHO DANH MỤC ICON --- */
+.visual-categories { padding: 40px 0; text-align: center; background: var(--bg-color); }
+.cat-title { font-family: var(--font-title); font-size: 22px; margin-bottom: 30px; color: var(--text-color); letter-spacing: 1px; }
+.category-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; }
+.cat-item { cursor: pointer; transition: 0.3s; text-decoration: none; display: block; }
+.cat-img { width: 100%; aspect-ratio: 1/1; border-radius: 18px; overflow: hidden; margin-bottom: 10px; background: #f9f9f9; border: 1px solid rgba(0,0,0,0.05); }
+.cat-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.cat-item span { font-size: 13px; font-weight: 600; color: var(--text-color); display: block; }
+.cat-item:hover .cat-img img { transform: scale(1.1); }
+.cat-item:hover span { color: var(--accent-color); }
+
+/* Mobile: Hiện 3 cột */
+@media (max-width: 768px) { .category-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; } }
         
     </style>
 </head>
@@ -128,6 +141,37 @@
             <button class="btn-gold" style="width:auto" onclick="window.scrollTo({top: 700, behavior: 'smooth'})">Khám Phá Ngay</button>
         </div>
     </section>
+    <section class="visual-categories">
+    <div class="container">
+        <h2 class="cat-title">Bạn đang tìm gì hôm nay?</h2>
+        <div class="category-grid">
+            <div class="cat-item" onclick="filterByCategory('kim-cuong')">
+                <div class="cat-img"><img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=300"></div>
+                <span>Nhẫn Kim cương</span>
+            </div>
+            <div class="cat-item" onclick="filterByCategory('nhan-cuoi')">
+                <div class="cat-img"><img src="https://images.unsplash.com/photo-1598560912005-59466576c2f1?w=300"></div>
+                <span>Nhẫn Cưới</span>
+            </div>
+            <div class="cat-item" onclick="filterByCategory('cau-hon')">
+                <div class="cat-img"><img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=300"></div>
+                <span>Nhẫn Cầu hôn</span>
+            </div>
+            <div class="cat-item" onclick="filterByCategory('bong-tai')">
+                <div class="cat-img"><img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=300"></div>
+                <span>Bông tai ECZ</span>
+            </div>
+            <div class="cat-item" onclick="filterByCategory('day-chuyen')">
+                <div class="cat-img"><img src="https://images.unsplash.com/photo-1599643478518-17488fbbcd75?w=300"></div>
+                <span>Dây chuyền Vàng</span>
+            </div>
+            <div class="cat-item" onclick="filterByCategory('dong-ho')">
+                <div class="cat-img"><img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=300"></div>
+                <span>Đồng hồ</span>
+            </div>
+        </div>
+    </div>
+</section>
 
     <div class="container collection">
         <div class="reveal" style="text-align: center; margin-bottom: 60px;">
@@ -303,6 +347,11 @@
 
         window.onclick = (e) => { if(e.target.id === 'productModal') closeModal(); };
         window.onload = () => { renderProducts(); updateUI(); reveal(); };
+        function filterByCategory(slug) {
+    console.log("Đang lọc theo danh mục:", slug);
+    // Sau này Backend chuyên nghiệp sẽ gọi API: fetch(`/api/products?cat=${slug}`)
+    alert("Hệ thống sẽ lọc các sản phẩm thuộc nhóm: " + slug);
+}
     </script>
     <footer style="background: #101010; color: #fff; padding: 60px 0 30px 0; margin-top: 50px; font-family: 'Times New Roman', serif; border-top: 1px solid #222;">
     <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; padding: 0 20px;">
